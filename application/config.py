@@ -1,7 +1,7 @@
 import os
 import binascii
 
-class Config(Object):
+class Config(object):
     """Base config"""
     DEBUG = False
     PORT = 8080
