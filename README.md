@@ -39,7 +39,7 @@ you can now deploy
 
 ```
 source env/bin/activate
-./run_application.sh
+./run.sh
 ```
 
 ### Coding style
@@ -48,7 +48,7 @@ the code style is using [pep8](https://pep8.org/)
 
 ## Deployment
 
-for know you can just run the **run_application.sh** for deploying the program.
+for know you can just run the **run.sh** for deploying the program.
 
 the file just runs the main.py file.
 
