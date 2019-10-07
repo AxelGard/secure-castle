@@ -6,11 +6,12 @@ A python flask file server that stores files securely
 Shell](http://gstatic.com/cloudssh/images/open-btn.png)](https://console.cloud.google.com/cloudshell/open?git_repo=https://github.com/AxelGard/secure-castle)
 
 <div style="width:150px; height:100px">
-<img src="https://i.pinimg.com/originals/cd/a6/c6/cda6c6bd76ac9b551dff9caf8bd4b0b5.jpg"
+<img src="https://www.nationalgallery.org.uk/media/28889/n-6668-00-000014-hd.jpg?center=0.34362934362934361,0.4258064516129032&mode=crop&width=1920&height=1080&rnd=132086219770000000"
      width="500" height="300"
      style="float: left; margin-right: 10px;" />
 </div>
 
+The Fortress of Königstein from the north by Bernardo Bellotto
 
 ## latest patch
 
