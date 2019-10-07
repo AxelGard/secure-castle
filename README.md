@@ -1,6 +1,6 @@
 # secure-castle
 A python flask file server that stores files securely
-** This project is still in heavy development **
+ **This project is still in heavy development**
 
 [![Open this project in Cloud
 Shell](http://gstatic.com/cloudssh/images/open-btn.png)](https://console.cloud.google.com/cloudshell/open?git_repo=https://github.com/AxelGard/secure-castle)
