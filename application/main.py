@@ -15,7 +15,7 @@ def create_server():
     return app
 
 app = create_server()
-import views
+from views import *
 
 def cache_buster():
     """ css cache buster """
