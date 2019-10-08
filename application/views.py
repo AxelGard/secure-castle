@@ -1,25 +1,20 @@
 from main import app
-from forms import *
+import forms
 from flask import render_template, abort, session, flash, redirect, request
 
 @app.route('/')
-@app.route('/home')
-@app.route('/home/')
-def index():
-    return render_template('index.html')
-
-
 @app.route('/login', methods=['GET', 'POST'])
 @app.route('/login/', methods=['GET', 'POST'])
 def login():
+    logout()
     if request.method == 'POST':
         username = request.form['username']
         password = request.form['password']
         if not username or not password:
             return abort(400)
-
+        
     elif request.method == 'GET':
-        form = LoginForum()
+        form = forms.LoginForum()
         return render_template('login.html', form=form)
     else:
         return abort(400)
