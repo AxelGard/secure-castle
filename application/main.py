@@ -14,18 +14,18 @@ def create_server():
     app.logger.addHandler(file_handler)
     return app
 
-server = create_server()
+app = create_server()
 import views
 
 def cache_buster():
     """ css cache buster """
     config = { 'extensions':['.js', '.css'], 'hash_size': 5 }
     cache_buster = CacheBuster(config=config)
-    cache_buster.init_app(server)
+    cache_buster.init_app(app)
 
 
 # run server
 if __name__ == "__main__":
     print(" * starting --> secure-castle")
     cache_buster()
-    server.run(debug=server.config['DEBUG'], port=server.config['PORT'])
+    app.run(debug=app.config['DEBUG'], port=app.config['PORT'])
