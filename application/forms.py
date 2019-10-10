@@ -3,5 +3,5 @@ from wtforms import TextField, PasswordField, IntegerField, StringField, validat
 
 class LoginForum(FlaskForm):
     """ login form filds """
-    username = TextField('username', render_kw={"placeholder": "e-mail"})
+    username = TextField('username', render_kw={"placeholder": "username"})
     password = PasswordField('password', render_kw={"placeholder": "password"})

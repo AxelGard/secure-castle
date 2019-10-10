@@ -2,6 +2,16 @@
 from flask import Flask, escape, request
 from flask_cachebuster import CacheBuster
 
+#JWT
+from flask_jwt import JWT, jwt_required, current_identity
+from werkzeug.security import safe_str_cmp
+from flask_jwt_extended import (
+    JWTManager, jwt_required, create_access_token,
+    get_jwt_identity
+)
+import user
+
+#logging
 import os
 import logging
 import logging.handlers
@@ -28,4 +38,5 @@ def cache_buster():
 if __name__ == "__main__":
     print(" * starting --> secure-castle")
     cache_buster()
+    jwt = JWT(app, user.authenticate, user.identity)
     app.run(debug=app.config['DEBUG'], port=app.config['PORT'])
