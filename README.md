@@ -35,13 +35,14 @@ python 3
 On macOS and Linux:
 
 ```
+python3 -m venv env
+source env/bin/activate
 ./install.sh
 ```
 
 you can now deploy
 
 ```
-source env/bin/activate
 ./run.sh
 ```
 

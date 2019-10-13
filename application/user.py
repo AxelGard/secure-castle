@@ -26,6 +26,7 @@ def authenticate(username, password):
         return user
 
 def is_authenticate(username, password):
+    ''' TEMP ''' 
     global users
     for user in users:
         if user.username == username and user.password == password:

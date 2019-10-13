@@ -1,5 +1,5 @@
 # flask
-from flask import Flask, escape, request
+from flask import Flask, escape, request, jsonify
 from flask_cachebuster import CacheBuster
 
 #JWT
@@ -38,5 +38,6 @@ def cache_buster():
 if __name__ == "__main__":
     print(" * starting --> secure-castle")
     cache_buster()
+    jwt = JWTManager(app)
     jwt = JWT(app, user.authenticate, user.identity)
     app.run(debug=app.config['DEBUG'], port=app.config['PORT'])
