@@ -38,7 +38,8 @@ def files():
     if not user_logged_in():
         return redirect('/')
     if request.method == 'GET':
-        return render_template('files.html')
+        dir = ['filename','filename2']
+        return render_template('files.html', files=dir)
     else:
         return redirect('/')
 

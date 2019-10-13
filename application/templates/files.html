@@ -1,5 +1,20 @@
-{% extends "main.html" %}
+{% extends 'main.html' %}
 
 {% block body %}
-  <p>test</p>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>file</th>
+      <th>Op</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for value in files %}
+      <tr>
+        <td>{{ key }}</td>
+        <td><button type="button" class="btn btn-primary btn-sm">Small</button></button> </td>
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
 {% endblock %}
