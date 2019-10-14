@@ -51,12 +51,10 @@ def logout():
     return redirect("/")
 
 
-@app.route('/error/<error_code>/<error_msg>')
-@app.route('/error/<error_code>/<error_msg>/')
-def show_error(error_code, error_msg):
-    if 'username' in session:
-        return "<h1>Error" + error_code + "</h1>" + error_msg
-
+@app.errorhandler(404)
+def page_not_found(e):
+    # set 404 status explicitly
+    return render_template('404.html'), 404
 
 def user_logged_in():
     return 'username' in session
