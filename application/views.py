@@ -8,7 +8,7 @@ from flask_jwt_extended import (
 )
 import user
 
-@app.route('/')
+@app.route('/', methods=['GET', 'POST'])
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
@@ -19,7 +19,7 @@ def login():
         elif user.is_authenticate(username, password):
             session['username'] = username
             session['logged_in'] = True
-            session['auth_token'] = "someTokenThatWillBeAddedLater"
+            #session['auth_token'] = "someTokenThatWillBeAddedLater"
             return redirect("/files")
         else:
             flask.flash("login fail")
@@ -31,15 +31,15 @@ def login():
         return render_template('login.html', form=form)
     else:
         return abort(400)
-    return redirect("/")
+    return redirect("/login")
 
 @app.route("/files")
 def files():
-    if not user_logged_in():
-        return redirect('/')
+    #if not user_logged_in():
+        #return redirect('/')
     if request.method == 'GET':
         dir = ['filename','filename2']
-        return render_template('files.html', files=dir)
+        return render_template('tables.html', files=dir)
     else:
         return redirect('/')
 
