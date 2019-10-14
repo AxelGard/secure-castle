@@ -35,8 +35,8 @@ def login():
 
 @app.route("/files")
 def files():
-    #if not user_logged_in():
-        #return redirect('/')
+    if not user_logged_in():
+        return redirect('/')
     if request.method == 'GET':
         dir = ['filename','filename2']
         return render_template('tables.html', files=dir)
