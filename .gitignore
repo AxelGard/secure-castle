@@ -6,3 +6,4 @@ env/
 *.db
 errorlog.txt
 .idea/
+*.aes

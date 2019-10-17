@@ -6,7 +6,8 @@ from flask_jwt_extended import (
     JWTManager, jwt_required, create_access_token,
     get_jwt_identity
 )
-import user
+from werkzeug import secure_filename
+import user, file_handler
 
 @app.route('/', methods=['GET', 'POST'])
 @app.route('/login', methods=['GET', 'POST'])
@@ -40,6 +41,26 @@ def files():
     if request.method == 'GET':
         dir = ['filename','filename2']
         return render_template('tables.html', files=dir)
+    else:
+        return redirect('/')
+
+@app.route("/newfile", methods=['GET', 'POST'])
+def new_file():
+    if not user_logged_in():
+        return redirect('/')
+    elif request.method == 'GET':
+        form = forms.File()
+        dir = ['filename','filename2']
+        return render_template('upload.html', form=form)
+    elif request.method == 'POST':
+        path = "files/"
+        f = request.files['file']
+        path += secure_filename(f.filename)
+        f.save(path)
+        file_obj = file_handler.File(secure_filename(f.filename), path, "AesCrypt")
+        key = str(request.form['key'])
+        file_obj.encrypte(key)
+        return redirect("/files")
     else:
         return redirect('/')
 
