@@ -39,7 +39,7 @@ def files():
     if not user_logged_in():
         return redirect('/')
     if request.method == 'GET':
-        dir = ['filename','filename2']
+        dir = file_handler.files_in_dir()
         return render_template('tables.html', files=dir)
     else:
         return redirect('/')
