@@ -7,3 +7,4 @@ env/
 errorlog.txt
 .idea/
 *.aes
+/files
