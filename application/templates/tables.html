@@ -2,7 +2,7 @@
 {% block content %}
 
         <div class="">
-          <a class="btn btn-success" href="newfile" role="button">New file</a>
+          <a class="btn btn-success" href="newfile" role="button">New file <i class="fa fa-upload" aria-hidden="true"></i></a>
         </div>
         <br>
 
@@ -20,25 +20,22 @@
                     <th>operation</th>
                   </tr>
                 </thead>
-                <tfoot>
-                  <tr>
-                    <th>filename</th>
-                    <th>operation</th>
-                  </tr>
-                </tfoot>
                 <tbody>
                   {% for value in files %}
                     <tr>
-                      <td>{{ value }}</td>
-                      <td><button type="button" class="btn btn-primary btn-sm">Small</button></button> </td>
+                      <td>{{ value }} <i class="fa fa-lock" aria-hidden="true"></i></td>
+                      <td>
+                        <div class="btn-group btn-group-sm">
+                          <a class="btn btn-danger" href="files/{{ value }}/delete" role="button"><i class="fa fa-trash" aria-hidden="true"></i></a>
+                          <a class="btn btn-primary" href="files/{{ value }}/download" role="button"><i class="fa fa-download" aria-hidden="true"></i></a>
+                        </div>
+                      </td>
                     </tr>
                   {% endfor %}
                 </tbody>
               </table>
             </div>
           </div>
-          <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
         </div>
-
 
 {% endblock %}

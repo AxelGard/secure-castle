@@ -14,7 +14,7 @@ class User(object):
 #temp usertest
 users = [
     User(1, 'user1', '123'),
-    User(2, 'user2', 'abcxyz'),
+    User(2, 'admin', 'password'),
 ]
 
 username_table = {u.username: u for u in users}
@@ -26,7 +26,7 @@ def authenticate(username, password):
         return user
 
 def is_authenticate(username, password):
-    ''' TEMP ''' 
+    ''' TEMP '''
     global users
     for user in users:
         if user.username == username and user.password == password:

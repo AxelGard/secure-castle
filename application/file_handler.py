@@ -20,7 +20,7 @@ class File:
         encrypter.dencrypt_AesCrypt(self, key)
 
     def remove(self):
-        pass
+        os.remove(self.path)
 
     def save_obj(self):
         pass
@@ -33,7 +33,6 @@ def new_dir(dir_name):
     except FileExistsError:
         # directory already exists
         pass
-
 
 def files_in_dir():
     path = "files/"

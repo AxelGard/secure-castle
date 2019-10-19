@@ -1,6 +1,6 @@
 from main import app
 import forms
-from flask import render_template, abort, session, flash, redirect, request, jsonify
+from flask import render_template, abort, session, flash, redirect, request, jsonify, send_file
 from flask_jwt import JWT, jwt_required, current_identity
 from flask_jwt_extended import (
     JWTManager, jwt_required, create_access_token,
@@ -40,6 +40,11 @@ def files():
         return redirect('/')
     if request.method == 'GET':
         dir = file_handler.files_in_dir()
+        # rm init.py
+        for i in range(len(dir)):
+            if dir[i] == "__init__.py":
+                dir.pop(i)
+
         return render_template('tables.html', files=dir)
     else:
         return redirect('/')
@@ -50,7 +55,6 @@ def new_file():
         return redirect('/')
     elif request.method == 'GET':
         form = forms.File()
-        dir = ['filename','filename2']
         return render_template('upload.html', form=form)
     elif request.method == 'POST':
         path = "files/"
@@ -61,6 +65,51 @@ def new_file():
         key = str(request.form['key'])
         file_obj.encrypte(key)
         return redirect("/files")
+    else:
+        return redirect('/')
+
+
+@app.route("/files/<filename>/download", methods=['GET', 'POST'])
+def download_file(filename):
+    if not user_logged_in():
+        return redirect('/')
+    elif request.method == 'GET':
+        form = forms.File()
+        return render_template('download.html', filename=filename, form=form)
+
+    elif request.method == 'POST':
+        # get file
+        path = "files/" + filename
+        file_obj = file_handler.File(filename, path, "AesCrypt")
+        # decrypt
+        key = str(request.form['key'])
+        file_obj.decrypte(key)
+
+        new_file_name = str(file_obj.name).replace('.aes', '')
+        new_file_path = 'files/temp/' + new_file_name
+        file_obj.remove()
+        new_file_obj = file_handler.File(new_file, new_file_path, None)
+
+        return send_file(new_file_obj.path, as_attachment=True), new_file_obj.remove()
+
+
+    else:
+        return redirect('/')
+
+
+@app.route("/files/<filename>/delete", methods=['GET', 'POST'])
+def delete_file(filename):
+    if not user_logged_in():
+        return redirect('/')
+    elif request.method == 'GET':
+        return render_template('delete.html', filename=filename)
+
+    elif request.method == 'POST':
+        path = "files/" + str(filename)
+        file_obj = file_handler.File(filename, path, "AesCrypt")
+        file_obj.remove()
+        return redirect("/files")
+
     else:
         return redirect('/')
 

@@ -1,0 +1,16 @@
+{% extends "layout.html" %}
+{% block content %}
+
+        <!-- Page Content -->
+        <div class="card border-danger mb-3" style="max-width: 18rem;">
+          <div class="card-header">Delete file</div>
+          <div class="card-body text-danger">
+            <h5 class="card-title">Warning(!)</h5>
+            <p class="card-text">Are you shore that you whant to <b>delete {{ filename }}</b></p>
+            <form class="" method="post">
+              <input class="btn btn-danger" type="submit"/>
+            </form>
+          </div>
+        </div>
+
+{% endblock %}

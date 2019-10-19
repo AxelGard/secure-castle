@@ -1,17 +1,20 @@
 {% extends "layout.html" %}
 {% block content %}
 
+        <!-- Breadcrumbs-->
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item">
+            <a href="/files">go back</a>
+          </li>
+        </ol>
+
         <!-- Page Content -->
         <div class="card w-50">
           <div class="card-header">
-            Upload file
+            Download file
           </div>
           <div class="card-body">
-            <form method = "POST"
-              enctype = "multipart/form-data">
-              <input type = "file" name = "file" />
-              <br>
-              <br>
+            <form method = "POST">
               {{ form.key(class="form-control") }}
               <br>
               <input class="btn btn-primary" type="submit"/>

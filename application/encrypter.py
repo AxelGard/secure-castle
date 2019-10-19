@@ -27,7 +27,8 @@ def dencrypt_AesCrypt(file, key):
     # encryption/decryption buffer size - 128K
     bufferSize = 128 * 1024
     password = key
-    save_name = str(file.name)
+    new_path = "files/temp/"
+    save_name = new_path + str(file.name).replace('.aes', '')
     with open(file.path, "rb") as fIn:
         try:
             with open(save_name, "wb") as fOut:
