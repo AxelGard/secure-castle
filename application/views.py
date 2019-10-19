@@ -7,6 +7,7 @@ from flask_jwt_extended import (
     get_jwt_identity
 )
 from werkzeug import secure_filename
+import os
 import user, file_handler
 
 @app.route('/', methods=['GET', 'POST'])
@@ -39,12 +40,7 @@ def files():
     if not user_logged_in():
         return redirect('/')
     if request.method == 'GET':
-        dir = file_handler.files_in_dir()
-        # rm init.py
-        for i in range(len(dir)):
-            if dir[i] == "__init__.py":
-                dir.pop(i)
-
+        dir = file_handler.files_in_dir("files/")
         return render_template('tables.html', files=dir)
     else:
         return redirect('/')
@@ -86,12 +82,17 @@ def download_file(filename):
         file_obj.decrypte(key)
 
         new_file_name = str(file_obj.name).replace('.aes', '')
-        new_file_path = 'files/temp/' + new_file_name
-        file_obj.remove()
-        new_file_obj = file_handler.File(new_file, new_file_path, None)
+        new_file_path = 'files/temp/'
+        # if was successful in decrypting file
+        if new_file_name in file_handler.files_in_dir(new_file_path):
+            new_file_path += new_file_name
+            file_obj.remove()
+            new_file_obj = file_handler.File(new_file, new_file_path, None)
 
-        return send_file(new_file_obj.path, as_attachment=True), new_file_obj.remove()
+            return send_file(new_file_obj.path, as_attachment=True), new_file_obj.remove()
 
+        else:
+            return redirect("/files/" + filename + "/download")
 
     else:
         return redirect('/')
