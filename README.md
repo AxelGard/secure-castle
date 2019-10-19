@@ -1,7 +1,7 @@
 # secure-castle
+
 A python flask file server that stores files securely with encryption
 
- **This project is still in heavy development**
 
 [![Open this project in Cloud
 Shell](http://gstatic.com/cloudssh/images/open-btn.png)](https://console.cloud.google.com/cloudshell/open?git_repo=https://github.com/AxelGard/secure-castle)
@@ -16,7 +16,10 @@ The Fortress of Königstein from the north by Bernardo Bellotto
 
 ## latest patch
 
+#### secure-castle alpha.1
 
+Now you can use secure-castle and upload file and encrypt those file.
+When you want the file you can download the file and the encrypted file will be deleted.
 
 ## Getting Started
 
@@ -27,6 +30,7 @@ These instructions will get you a copy of the project up and running on your loc
 What things you need to install
 
 ```
+virtualenv
 python 3
 ```
 
@@ -35,6 +39,7 @@ python 3
 On macOS and Linux:
 
 ```
+python3 -m pip3 install --user virtualenv
 python3 -m venv env
 source env/bin/activate
 ./install.sh
@@ -54,7 +59,7 @@ the code style is using [pep8](https://pep8.org/)
 
 for know you can just run the **run.sh** for deploying the program.
 
-the file just runs the main.py file.
+the file just **runs** the main.py file.
 
 ```
 source env/bin/activate
@@ -65,7 +70,7 @@ source env/bin/activate
 
 * [Python](https://www.python.org/) - language
 * [Flask](http://flask.palletsprojects.com/en/1.1.x/) - framework
-* []() -
+* [pyAesCrypt](https://pypi.org/project/pyAesCrypt/) - encryption lib
 
 ## Versioning
 
@@ -84,5 +89,5 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## Acknowledgments
 
-*
+* [pyAesCrypt](https://pypi.org/project/pyAesCrypt/)
 *
