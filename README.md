@@ -7,7 +7,7 @@ A python flask file server that stores files securely with encryption
 Shell](http://gstatic.com/cloudssh/images/open-btn.png)](https://console.cloud.google.com/cloudshell/open?git_repo=https://github.com/AxelGard/secure-castle)
 
 <div style="width:150px; height:100px">
-<img src="https://www.nationalgallery.org.uk/media/28889/n-6668-00-000014-hd.jpg?center=0.34362934362934361,0.4258064516129032&mode=crop&width=1920&height=1080&rnd=132086219770000000"
+<img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fe%2Fe8%2FThe_Fortress_of_K%25C3%25B6nigstein_from_the_North_by_Bernardo_Bellotto.jpg&f=1&nofb=1"
      width="500" height="300"
      style="float: left; margin-right: 10px;" />
 </div>
